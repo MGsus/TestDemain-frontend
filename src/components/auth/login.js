@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './login.css';
-import {setInStorage} from '../../Utils/storage';
-import {Button, FormControl, FormGroup, FormLabel} from '@material-ui/core';
+import { setInStorage } from '../../Utils/storage';
+import { Button, FormControl, FormGroup, FormLabel } from '@material-ui/core';
 import axios from 'axios';
 
 export default class Login extends Component {
@@ -42,13 +42,13 @@ export default class Login extends Component {
             password: this.state.password
         };
 
-        axios.post('http://localhost:5000/logIn', userLogin)
+        axios.post(process.env.BACKEND_URL, userLogin)
             .then(res => {
                 this.setState({
                     signInError: res.data.message,
                 });
                 if (res.data.success) {
-                    setInStorage('the_main_app', {token: res.data.token});
+                    setInStorage('the_main_app', { token: res.data.token });
                     window.location = "/"
                 }
             })
@@ -62,7 +62,7 @@ export default class Login extends Component {
     render() {
         return (
             <div className="Login">
-                <br/>
+                <br />
                 {
                     (this.state.signInError) ? (
                         <div className="text-danger"><p>{this.state.signInError}</p></div>) : null

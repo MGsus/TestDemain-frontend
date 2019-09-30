@@ -28,7 +28,7 @@ export async function verifyToken() {
     if (obj && obj.token) {
         const {token} = obj;
         //verify token
-        axios.get('http://localhost:5000/auth/verify?token=' + token)
+        axios.get('https://backend-evening-eyrie.herokuapp.com:5000/auth/verify?token=' + token)
             .then(res => {
                 if (res.data.success) {
                     console.log("Valid token");
