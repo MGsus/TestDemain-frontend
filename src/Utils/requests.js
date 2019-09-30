@@ -1,7 +1,11 @@
-import { axios } from "axios";
+import axios from "axios";
 
-const configureRequests = () => {
-    axios.defaults.baseURL = process.env.BACKEND_URL;
+const logIn = function (userLogin) {
+    return axios.post('logIn/', {userLogin});
 };
 
-export default configureRequests;
+const signIn = function (userSignIn) {
+    return axios.post('signIn/', userSignIn);
+};
+
+export {logIn, signIn};
