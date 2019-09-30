@@ -42,7 +42,7 @@ export default class Login extends Component {
             password: this.state.password
         };
 
-        axios.post(process.env.BACKEND_URL, userLogin)
+        axios.post("/logIn", userLogin)
             .then(res => {
                 this.setState({
                     signInError: res.data.message,
