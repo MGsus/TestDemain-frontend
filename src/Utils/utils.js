@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const configureRequests = function () {
+const configureRequests = () => {
     axios.defaults.baseURL = process.env.BACKEND_URL;
 };
 
