@@ -1,4 +1,4 @@
-FROM node:10
+FROM node:10 as builder
 
 WORKDIR /usr/src/app
 
@@ -7,9 +7,20 @@ WORKDIR /usr/src/app
 # where available (npm@5+)
 COPY package*.json ./
 
-RUN npm install && npm i -g serve
+RUN npm install
+RUN npm i -g serve
 # If you are building your code for production
 # RUN npm ci --only=production
 
 # Bundle app source
 COPY . .
+
+RUN npm run build
+
+FROM node:10 as final
+
+WORKDIR /usr/share/app
+
+COPY --from=builder usr/src/app/build /usr/share/app
+
+RUN serve -l $PORT
