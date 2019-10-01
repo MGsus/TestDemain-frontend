@@ -1,7 +1,5 @@
 FROM node:10
 
-ARG BACKEND_URL
-
 WORKDIR /usr/src/app
 
 # Install app dependencies
