@@ -12,15 +12,9 @@ RUN npm i -g serve
 # If you are building your code for production
 # RUN npm ci --only=production
 
+RUN npm run build
+
 # Bundle app source
 COPY . .
 
-RUN npm run build
 
-FROM node:10 as final
-
-WORKDIR /usr/share/app
-
-COPY --from=builder usr/src/app/build /usr/share/app
-
-RUN serve -l $PORT

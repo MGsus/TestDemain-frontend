@@ -2,4 +2,4 @@ build:
   docker:
     frontend: ./Dockerfile.production
 run:
-  frontend: serve -l $PORT
+  web: serve -l $PORT
