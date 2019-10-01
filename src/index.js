@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import configureRequests from "./Utils/utils";
-import {createMuiTheme} from "@material-ui/core";
+import {createMuiTheme, MuiThemeProvider} from "@material-ui/core";
 import {blue} from "@material-ui/core/colors";
 
 const theme = createMuiTheme({
